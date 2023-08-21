@@ -6,9 +6,10 @@ type Props = {
   date: string;
   subheader: string;
   description: string;
+  features: string[];
 }
 
-export default function Tile( { className, title, date, subheader, description  }: Props ) {
+export default function Tile( { className, title, date, subheader, description, features  }: Props ) {
   return (
     <div className={"bg-black bg-opacity-20 p-5 hover:bg-opacity-60" + " " + className }>
 
@@ -22,15 +23,7 @@ export default function Tile( { className, title, date, subheader, description  
       </div>
       <div>
         <div className="mt-3">
-          <Tag className="mr-2 mb-2" text="TypeScript" />
-          <Tag className="mr-2 mb-2" text="JavaScript" />
-          <Tag className="mr-2 mb-2" text="React" />
-          <Tag className="mr-2 mb-2" text="PostgreSQL" />
-          <Tag className="mr-2 mb-2" text="React" />
-          <Tag className="mr-2 mb-2" text="React" />
-          <Tag className="mr-2 mb-2" text="React" />
-          <Tag className="mr-2 mb-2" text="React" />
-          <Tag className="mr-2 mb-2" text="React" />
+          { features?.map( ( feature ) => ( <Tag key={ feature } className="mr-2 mb-2" text={ feature } /> ) ) }
         </div>
       </div>
 

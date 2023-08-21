@@ -15,6 +15,7 @@ type Tile = {
 	subHeader: string;
 	description: string;
 	date: string;
+	features: string[],
 }
 
 export default async function Home() {
@@ -38,12 +39,13 @@ export default async function Home() {
 			subHeader: experience.subheader,
 			description: experience.description,
 			date: experience.date,
+			features: experience.features,
 		} ) )
 	} catch (e) {
 		console.log(e)
 	}
 	return (
-		<div className="w-screen h-screen bg-primary-900">
+		<div className="w-screen bg-primary-900">
 			{ homepage && experiences && (
 				<div className="max-w-screen-xl mx-auto flex justify-center">
 					<div className="grid grid-cols-12 mt-32">
@@ -56,10 +58,10 @@ export default async function Home() {
 
 						<main className="col-span-12 md:col-span-6 px-10 py-5">
 							<h1 className="text-3xl text-right">Experience</h1>
-							<div className="mt-3">
+							<div>
 								{
 									experiences.map( (experience) => (
-										<Tile key={ experience.id } title={ experience.title } subheader={ experience.subHeader } description={ experience.description } date={ experience.date }/>
+										<Tile key={ experience.id } className="mt-3" title={ experience.title } subheader={ experience.subHeader } description={ experience.description } date={ experience.date } features={ experience.features }/>
 									) )
 								}
 							</div>
