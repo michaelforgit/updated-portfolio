@@ -45,7 +45,7 @@ export default async function Home() {
 		console.log(e)
 	}
 	return (
-		<div className="w-screen bg-primary-900">
+		<div className="w-screen min-h-screen bg-primary-900">
 			{ homepage && experiences && (
 				<div className="max-w-screen-xl mx-auto flex justify-center">
 					<div className="grid grid-cols-12 mt-32">
@@ -57,7 +57,7 @@ export default async function Home() {
 						</header>
 
 						<main className="col-span-12 md:col-span-6 px-10 py-5">
-							<h1 className="text-3xl text-right">Experience</h1>
+							<h1 className="text-3xl text-left">Experience</h1>
 							<div>
 								{
 									experiences.map( (experience) => (
