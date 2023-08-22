@@ -2,6 +2,7 @@ import { useContext, createServerContext } from 'react'
 import { InferGetServerSidePropsType, GetServerSideProps } from 'next'
 import Tile from './components/tile'
 import clientPromise from './lib/mongodb'
+import { FaLinkedin, FaGithubSquare, FaEnvelopeSquare } from "react-icons/fa"
 
 type HomePage = {
 	title: string;
@@ -48,12 +49,17 @@ export default async function Home() {
 		<div className="w-screen min-h-screen bg-primary-900">
 			{ homepage && experiences && (
 				<div className="max-w-screen-xl mx-auto flex justify-center">
-					<div className="grid grid-cols-12 mt-32">
+					<div className="grid grid-cols-12 mt-16 md:mt-32">
 
 						<header className="col-span-12 md:col-span-6 px-10 py-5">
 							<h1 className="text-left text-5xl font-bold">{ homepage?.find(e => e)?.title || "Title" }</h1>
 							<p className="mt-3 text-left text-xl">{ homepage?.find(e => e)?.subtitle || "Subtitle" }</p>
 							<p className="mt-3 text-left text-xl text-primary-400">{ homepage?.find(e => e)?.description || "Description" }</p>
+							<div className="mt-3 flex justify-center gap-6 h-12 md:h-16">
+								<FaLinkedin size="auto" />
+								<FaGithubSquare size="auto" />
+								<FaEnvelopeSquare size="auto" />
+							</div>
 						</header>
 
 						<main className="col-span-12 md:col-span-6 px-10 py-5">
