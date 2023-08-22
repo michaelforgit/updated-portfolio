@@ -1,9 +1,7 @@
-import { useContext, createServerContext } from 'react'
-import { InferGetServerSidePropsType, GetServerSideProps } from 'next'
 import Tile from './components/tile'
 import clientPromise from './lib/mongodb'
 import { FaLinkedin, FaGithubSquare, FaEnvelopeSquare } from "react-icons/fa"
-
+import Image from 'next/image'
 type HomePage = {
 	title: string;
 	subtitle: string;
@@ -46,23 +44,32 @@ export default async function Home() {
 		console.log(e)
 	}
 	return (
-		<div className="w-screen min-h-screen bg-primary-900">
+		<div className="w-screen min-h-screen bg-primary-900 bg-opacity-0 relative">
+				<Image
+					alt="Background image of mountains."
+					src="/background.jpg"
+					className="z-[-1] object-cover"
+					fill={ true }
+					quality={ 100 }
+				/>
 			{ homepage && experiences && (
-				<div className="max-w-screen-xl mx-auto flex justify-center">
+				<div className="max-w-screen-2xl mx-auto flex justify-center">
 					<div className="grid grid-cols-12 mt-16 md:mt-32">
 
-						<header className="col-span-12 md:col-span-6 px-10 py-5">
-							<h1 className="text-left text-5xl font-bold">{ homepage?.find(e => e)?.title || "Title" }</h1>
-							<p className="mt-3 text-left text-xl">{ homepage?.find(e => e)?.subtitle || "Subtitle" }</p>
-							<p className="mt-3 text-left text-xl text-primary-400">{ homepage?.find(e => e)?.description || "Description" }</p>
-							<div className="mt-3 flex justify-center gap-6 h-12 md:h-16">
-								<FaLinkedin size="auto" />
-								<FaGithubSquare size="auto" />
-								<FaEnvelopeSquare size="auto" />
+						<header className="col-span-12 md:col-span-6 py-3 px-10">
+							<div className="flex col-span-2 justify-between">
+								<h1 className="text-left text-4xl xl:text-5xl font-bold">{ homepage?.find(e => e)?.title || "Title" }</h1>
+								<div className="flex justify-center h-10 self-end">
+									<FaLinkedin className="h-full w-auto" />
+									<FaGithubSquare className="h-full w-auto" />
+									<FaEnvelopeSquare className="h-full w-auto" />
+								</div>
 							</div>
+							<p className="mt-3 text-left text-xl">{ homepage?.find(e => e)?.subtitle || "Subtitle" }</p>
+							<p className="mt-3 text-left text-xl">{ homepage?.find(e => e)?.description || "Description" }</p>
 						</header>
 
-						<main className="col-span-12 md:col-span-6 px-10 py-5">
+						<main className="col-span-12 md:col-span-6 py-5 px-10">
 							<h1 className="text-3xl text-left">Experience</h1>
 							<div>
 								{
