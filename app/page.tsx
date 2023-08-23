@@ -1,6 +1,7 @@
 import Tile from './components/tile'
 import clientPromise from './lib/mongodb'
 import { FaLinkedin, FaGithubSquare, FaEnvelopeSquare } from "react-icons/fa"
+import DynamicBackground from './components/dynamicBackground'
 import Image from 'next/image'
 type HomePage = {
 	title: string;
@@ -44,14 +45,8 @@ export default async function Home() {
 		console.log(e)
 	}
 	return (
-		<div className="w-screen min-h-screen bg-primary-900 bg-opacity-0 relative">
-				<Image
-					alt="Background image of mountains."
-					src="/background.jpg"
-					className="z-[-1] object-cover"
-					fill={ true }
- 					quality={ 100 }
-				/>
+		<div className="w-screen min-h-screen">
+			<DynamicBackground />
 			{ homepage && experiences && (
 				<div className="max-w-screen-2xl mx-auto flex justify-center">
 					<div className="grid grid-cols-12 mt-16 md:mt-32">

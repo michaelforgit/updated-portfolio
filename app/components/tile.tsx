@@ -11,7 +11,7 @@ type Props = {
 
 export default function Tile( { className, title, date, subheader, description, features  }: Props ) {
   return (
-    <div className={"bg-black bg-opacity-40 p-5 hover:bg-opacity-60" + " " + className }>
+    <div className={"bg-black bg-opacity-75 p-5 hover:bg-opacity-90" + " " + className }>
 
       <div className="grid grid-cols-2">
         <h1 className="col-span-2 lg:col-span-1 text-lg">{ title }</h1>
