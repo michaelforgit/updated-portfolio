@@ -2,7 +2,7 @@
 import { useEffect, useState, useRef } from 'react';
 
 const DynamicBackground = () => {
-  const numImages = 20;
+  const numImages = 200;
 
   const [imageIndex, setImageIndex] = useState(1);
   const prevScrollY = useRef(0);
