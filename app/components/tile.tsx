@@ -11,8 +11,9 @@ type Props = {
 
 const modifyString = ( str: string ) => {
   console.log( str )
-  console.log ( str.replace('TEST', '<br />') )
-  return str.replace('TEST', '<br />')
+  const textSplit = str.split('<br>')
+  const res = textSplit.map( ( text ) => ( <span>{ text }</span> ) )
+  return res
 }
 
 export default function Tile( { className, title, date, subheader, description, features  }: Props ) {
@@ -24,7 +25,7 @@ export default function Tile( { className, title, date, subheader, description, 
         <p className="text-lg text-left lg:text-right">{ date }</p>
       </div>
       <div>
-        <h2 className="text-lg mt-2">{ modifyString( subheader ) }</h2>
+        <h2 className="text-lg mt-2 flex flex-col gap-2">{ modifyString( subheader ) }</h2>
         <p className="mt-3 text-slate-200">{ description }</p>
       </div>
       <div>
