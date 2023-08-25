@@ -9,17 +9,23 @@ type Props = {
   features: string[];
 }
 
+const modifyString = ( str: string ) => {
+  console.log( str )
+  console.log ( str.replace('TEST', '<br />') )
+  return str.replace('TEST', '<br />')
+}
+
 export default function Tile( { className, title, date, subheader, description, features  }: Props ) {
   return (
     <div className={"bg-black bg-opacity-20 p-5 hover:bg-opacity-60" + " " + className }>
 
-      <div className="grid grid-cols-2">
-        <h1 className="col-span-2 lg:col-span-1 text-lg">{ title }</h1>
-        <p className="col-span-2 lg:col-span-1 text-lg text-left lg:text-right">{ date }</p>
+      <div className="flex flex-wrap justify-between">
+        <h1 className="text-lg font-bold">{ title }</h1>
+        <p className="text-lg text-left lg:text-right">{ date }</p>
       </div>
       <div>
-        <h2 className="text-lg mt-2 font-bold">{ subheader }</h2>
-        <p className="mt-3">{ description }</p>
+        <h2 className="text-lg mt-2">{ modifyString( subheader ) }</h2>
+        <p className="mt-3 text-slate-200">{ description }</p>
       </div>
       <div>
         <div className="mt-3">
