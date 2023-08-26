@@ -52,6 +52,9 @@ export default async function Home() {
 							</div>
 							<p className="mt-2 text-center md:text-left text-xl">{ homepage?.find(e => e)?.subtitle || "Subtitle" }</p>
 							<p className="mt-2 text-center md:text-left text-xl">{ homepage?.find(e => e)?.description || "Description" }</p>
+							<div className="mt-32">
+								<TileSection sectionKey="about" sectionTitle="More About Me" />
+							</div>
 						</header>
 
 						<main className="col-span-12 md:col-span-6 py-5 px-6 lg:px-10">
