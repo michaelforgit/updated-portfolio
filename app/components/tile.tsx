@@ -10,7 +10,6 @@ type Props = {
 }
 
 const modifyString = ( str: string ) => {
-  console.log( str )
   const textSplit = str.split('<br>')
   const res = textSplit.map( ( text, index ) => ( <span key={ index }>{ text }</span> ) )
   return res
