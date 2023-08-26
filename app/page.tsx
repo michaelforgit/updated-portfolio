@@ -1,6 +1,9 @@
 import Tile from './components/tile'
+import TileSection from './components/tileSection'
 import clientPromise from './lib/mongodb'
 import { FaLinkedin, FaGithubSquare, FaEnvelopeSquare } from "react-icons/fa"
+import { Document, WithId } from 'mongodb'
+
 
 type HomePage = {
 	title: string;
@@ -8,64 +11,27 @@ type HomePage = {
 	description: string;
 }
 
-type Tile = {
-	id: string;
-	title: string;
-	subHeader: string;
-	description: string;
-	date: string;
-	features: string[],
-}
-
 export default async function Home() {
-	let client
-	let db
-	let experiences: Tile[] = []
-	let schools: Tile[] = []
-	let projects: Tile[] = []
-	let homepage: HomePage[] = []
+	const sectionDictionary = { experiences: "experience", projects: "projects", schools: "education" }  //Collection name is different than rendered name.
+	let homepageReq: WithId<Document>[] = []
+
 	try {
-		client = await clientPromise
-		db = await client.db("information")
-		const experiencesReq = await db.collection('experiences').find({}).toArray()
-		const projectsReq = await db.collection('projects').find({}).toArray()
-		const schoolsReq = await db.collection('schools').find({}).toArray()
-		const homepageReq = await db.collection('homepage').find({}).toArray()
-		homepage = homepageReq.map( (homepage) => ( {
-			title: homepage.title,
-			subtitle: homepage.subtitle,
-			description: homepage.description,
-		} ) )
-		experiences = experiencesReq.map( (experience) => ( {
-			id: experience._id.toString(),
-			title: experience.title,
-			subHeader: experience.subheader,
-			description: experience.description,
-			date: experience.date,
-			features: experience.features,
-		} ) )
-		projects = projectsReq.map( (experience) => ( {
-			id: experience._id.toString(),
-			title: experience.title,
-			subHeader: experience.subheader,
-			description: experience.description,
-			date: experience.date,
-			features: experience.features,
-		} ) )
-		schools = schoolsReq.map( (experience) => ( {
-			id: experience._id.toString(),
-			title: experience.title,
-			subHeader: experience.subheader,
-			description: experience.description,
-			date: experience.date,
-			features: experience.features,
-		} ) )
+		const client = await clientPromise
+		const db = await client.db("information")
+		homepageReq = await db.collection('homepage').find({}).toArray()
 	} catch (e) {
 		console.log(e)
 	}
+
+	const homepage : HomePage[] = homepageReq.map( (homepage) => ( {
+		title: homepage.title,
+		subtitle: homepage.subtitle,
+		description: homepage.description,
+	} ) )
+
 	return (
 		<div className="min-h-screen bg-gradient-to-tr from-slate-900 to-slate-700">
-			{ homepage && experiences && (
+			{ homepage && (
 				<div className="max-w-screen-2xl mx-auto flex justify-center">
 					<div className="grid grid-cols-12 mt-16 md:mt-32">
 
@@ -89,31 +55,13 @@ export default async function Home() {
 						</header>
 
 						<main className="col-span-12 md:col-span-6 py-5 px-6 lg:px-10">
-						<h1 className="font-bold text-2xl text-left">Experience</h1>
-							<div className="p-3">
-								{
-									experiences.map( (experience) => (
-										<Tile key={ experience.id } className="mt-3" title={ experience.title } subheader={ experience.subHeader } description={ experience.description } date={ experience.date } features={ experience.features }/>
-									) )
-								}
-							</div>
-							<h1 className="font-bold text-2xl text-left">Projects</h1>
-							<div className="p-3">
-								{
-									projects.map( (project) => (
-										<Tile key={ project.id } className="mt-3" title={ project.title } subheader={ project.subHeader } description={ project.description } date={ project.date } features={ project.features }/>
-									) )
-								}
-							</div>
-							<h1 className="font-bold text-2xl text-left">Education</h1>
-							<div className="p-3">
-								{
-									schools.map( (school) => (
-										<Tile key={ school.id } className="mt-3" title={ school.title } subheader={ school.subHeader } description={ school.description } date={ school.date } features={ school.features }/>
-									) )
-								}
-							</div>
+							{
+								Object.entries( sectionDictionary ).map( ( [sectionKey, sectionTitle ] ) => (
+									<TileSection key={ sectionKey } sectionKey={ sectionKey } sectionTitle={ sectionTitle } /> 
+								) )
+							}
 						</main>
+						
 					</div>
 				</div>
 			) }
