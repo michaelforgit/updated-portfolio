@@ -32,10 +32,10 @@ export default async function Home() {
 	return (
 		<div className="min-h-screen bg-gradient-to-tr from-slate-900 to-slate-700">
 			{ homepage && (
-				<div className="max-w-screen-2xl mx-auto flex justify-center">
-					<div className="grid grid-cols-12 mt-16 md:mt-32">
+				<div className="max-w-screen-2xl mx-auto flex justify-center h-screen">
+					<div className="flex flex-col md:flex-row mt-16 md:mt-32">
 
-						<header className="col-span-12 md:col-span-6 py-3 px-6 lg:px-10">
+						<header className="py-3 px-6 lg:px-10">
 							<div className="flex flex-col lg:flex-row col-span-2 justify-between">
 								<h1 className="md:text-left text-4xl xl:text-5xl font-bold text-center bg-gradient-to-r from-blue-200 to-cyan-200 bg-clip-text text-transparent">{ homepage?.find(e => e)?.title || "Title" }</h1>
 								<div className="flex justify-center md:justify-start h-10 mt-2">
@@ -52,17 +52,19 @@ export default async function Home() {
 							</div>
 							<p className="mt-2 text-center md:text-left text-xl">{ homepage?.find(e => e)?.subtitle || "Subtitle" }</p>
 							<p className="mt-2 text-center md:text-left text-xl">{ homepage?.find(e => e)?.description || "Description" }</p>
-							<div className="mt-32">
+							<div className="hidden md:block md:mt-32">
 								<TileSection sectionKey="about" sectionTitle="More About Me" />
 							</div>
 						</header>
 
-						<main className="col-span-12 md:col-span-6 py-5 px-6 lg:px-10">
-							{
-								Object.entries( sectionDictionary ).map( ( [sectionKey, sectionTitle ] ) => (
-									<TileSection key={ sectionKey } sectionKey={ sectionKey } sectionTitle={ sectionTitle } /> 
-								) )
-							}
+						<main className="py-5 px-6 lg:px-10 overflow-hidden flex flex-col">
+							<div className="flex-1 overflow-y-scroll no-scrollbar">
+								{
+									Object.entries( sectionDictionary ).map( ( [sectionKey, sectionTitle ] ) => (
+										<TileSection key={ sectionKey } sectionKey={ sectionKey } sectionTitle={ sectionTitle }/> 
+									) )
+								}
+							</div>
 						</main>
 						
 					</div>

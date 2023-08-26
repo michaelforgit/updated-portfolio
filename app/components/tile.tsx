@@ -17,7 +17,7 @@ const modifyString = ( str: string ) => {
 
 export default function Tile( { className, title, date, subheader, description, features  }: Props ) {
   return (
-    <div className={"bg-black bg-opacity-20 p-5 hover:bg-opacity-60" + " " + className }>
+    <div className={"bg-black bg-opacity-0 p-5 rounded-lg" + ( className ? " " + className : "") + ( title ? " hover:bg-opacity-60" : "") }>
 
       { title && <div className="flex flex-wrap justify-between">
         <h1 className="text-lg font-bold">{ title }</h1>
