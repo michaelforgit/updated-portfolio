@@ -30,9 +30,9 @@ export default async function Home() {
 	} ) )
 
 	return (
-		<div className="min-h-screen bg-gradient-to-tr from-slate-900 to-slate-700 overflow-y-scroll">
+		<div className="h-[calc(100dvh)] bg-gradient-to-tr from-slate-900 to-slate-700 overflow-y-scroll">
 			{ homepage && (
-				<div className="max-w-screen-2xl mx-auto flex justify-center h-screen">
+				<div className="h-[calc(100dvh)] max-w-screen-2xl mx-auto flex justify-center">
 					<div className="md:relative flex flex-col md:flex-row mt-16 md:mt-32 h-max">
 
 						<header className="md:sticky top-32 left-0 h-fit py-3 px-6 lg:px-10">
