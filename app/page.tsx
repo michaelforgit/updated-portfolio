@@ -1,6 +1,5 @@
 import Tile from './components/tile'
 import TileSection from './components/tileSection'
-import ScrollPage from './components/scrollPage'
 import clientPromise from './lib/mongodb'
 import { FaLinkedin, FaGithubSquare, FaEnvelopeSquare } from "react-icons/fa"
 import { Document, WithId } from 'mongodb'
