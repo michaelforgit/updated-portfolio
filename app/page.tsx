@@ -42,7 +42,7 @@ export default async function Home() {
 										<a href="https://www.linkedin.com/in/michael-ogorman" className="h-full w-auto">
 											<FaLinkedin className="h-full w-auto" />
 										</a>
-										<a href="https://github.com/michaelforgit" className="h-full w-auto">
+										<a href="https://github.com/beteabtefera" className="h-full w-auto">
 											<FaGithubSquare className="h-full w-auto" />
 										</a>
 										<a href="mailto:ogormanjmichael@gmail.com" className="h-full w-auto">
