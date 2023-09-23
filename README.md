@@ -8,7 +8,7 @@ MongoDB is used to store information that is later displayed on the portfolio.  
 
 ## Run it Locally
 
-If you want to run this locally you can.  Nothing will load unless you set a ```MONGO_URI``` inside of ```.env.local```
+If you want to run this locally you can.  Nothing will load unless you set a ```MONGODB_URI``` inside of ```.env.local```
 ```bash
 npm run dev
 # or
