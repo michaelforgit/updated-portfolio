@@ -17,14 +17,14 @@ const modifyString = ( str: string ) => {
 
 export default function Tile( { className, title, date, subheader, description, features  }: Props ) {
   return (
-    <div className={"bg-black bg-opacity-0 p-5 rounded-lg" + ( className ? " " + className : "") + ( title ? " hover:bg-opacity-60" : "") }>
+    <div className={"bg-black bg-opacity-20 p-5 rounded-lg" + ( className ? " " + className : "") + ( title ? " hover:bg-opacity-60" : "") }>
 
       { title && <div className="flex flex-wrap justify-between">
-        <h1 className="text-lg font-bold">{ title }</h1>
-        <p className="text-lg text-left lg:text-right">{ date }</p>
+        <h1 className="text-lg font-bold text-white">{ title }</h1>
+        <p className="text-lg text-left lg:text-right text-white">{ date }</p>
       </div> }
       <div>
-        { subheader && <h2 className="text-lg mt-2 flex flex-col gap-2">{ subheader !== undefined ? modifyString( subheader ) : <></> }</h2> }
+        { subheader && <h2 className="text-lg mt-2 flex flex-col gap-2 text-white">{ subheader !== undefined ? modifyString( subheader ) : <></> }</h2> }
         <p className={ "text-slate-200 " + ( title ? "mt-2" : "" ) }>{ description }</p>
       </div>
       { features && <div>

@@ -39,7 +39,7 @@ export default async function TileSection( { sectionKey, sectionTitle, className
 
   return ( 
     <div className={ className }>
-      <h1 className="font-bold text-2xl text-left">{ sectionTitle.charAt(0).toUpperCase() + sectionTitle.slice(1) }</h1>
+      <h1 className="font-bold text-2xl text-left text-white">{ sectionTitle.charAt(0).toUpperCase() + sectionTitle.slice(1) }</h1>
       <div className="p-2 flex flex-col gap-3">
         {
           items.map( (item) => (

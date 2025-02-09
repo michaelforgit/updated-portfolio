@@ -38,9 +38,9 @@ export default async function Home() {
 						<header className="md:sticky top-32 left-0 h-fit py-3 px-6 lg:px-10">
 								<div className="flex flex-col lg:flex-row col-span-2 justify-between">
 									<h1 className="md:text-left text-4xl xl:text-5xl font-bold text-center bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">{ homepage?.find(e => e)?.title || "Title" }</h1>
-									<div className="flex justify-center md:justify-start h-10 mt-2">
+									<div className="flex justify-center md:justify-start h-10 mt-2 text-white">
 										<a href="https://www.linkedin.com/in/michael-ogorman" className="h-full w-auto">
-											<FaLinkedin className="h-full w-auto" />
+											<FaLinkedin className="h-full w-auto " />
 										</a>
 										<a href="https://github.com/michaelforgit" className="h-full w-auto">
 											<FaGithubSquare className="h-full w-auto" />
@@ -50,8 +50,8 @@ export default async function Home() {
 										</a>
 									</div>
 								</div>
-								<p className="mt-2 text-center md:text-left text-xl">{ homepage?.find(e => e)?.subtitle || "Subtitle" }</p>
-								<p className="mt-2 text-center md:text-left text-xl">{ homepage?.find(e => e)?.description || "Description" }</p>
+								<p className="mt-2 text-center md:text-left text-xl text-white">{ homepage?.find(e => e)?.subtitle || "Subtitle" }</p>
+								<p className="mt-2 text-center md:text-left text-xl text-white">{ homepage?.find(e => e)?.description || "Description" }</p>
 								<div className="hidden md:block md:mt-32">
 									<TileSection sectionKey="about" sectionTitle="More About Me" />
 								</div>
